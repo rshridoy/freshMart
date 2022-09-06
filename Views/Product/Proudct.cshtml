@@ -1,0 +1,62 @@
+﻿@model freshMart.Models.tbl_product
+@{
+    ViewBag.Title = "Proudct";
+}
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("AddProudct", "Product", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="nav-menus">
+
+                <ul class="nav nav-pills">
+                    
+                    <li><a style="border-radius:initial;" href="/Product/ProductList">Product List</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class=" form-group">
+            @Html.HiddenFor(x=>x.product_id)
+            <label>Product Name</label>
+            @Html.ValidationMessageFor(x => x.product_name, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.product_name, new { @class = "form-control" })
+        </div>
+        <div class=" form-group">
+            <label>Product Image</label>
+            @Html.ValidationMessageFor(x => x.product_image, "", new { @class = "error" })
+            @*<input type="file" name="Imagefile"/>*@
+            @Html.TextBoxFor(x => x.product_image, new { @class = "form-control" })
+        </div>
+        <div class=" form-group">
+            <label>Product Price</label>
+            @Html.ValidationMessageFor(x => x.product_price, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.product_price, new { @class = "form-control" })
+        </div>
+        <div class=" form-group">
+            <label>Product Description</label>
+            @Html.ValidationMessageFor(x => x.product_description, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.product_description, new { @class = "form-control", @rows = "10" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </div>
+
+}
+
